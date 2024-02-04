@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title>Calculadora VLSM - Hackone</title>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/form.css">
+  <link rel="stylesheet" href="styles/label-float.css">
+  <link rel="stylesheet" href="styles/table.css">
+
+  <script src="scripts/namespaces.js" defer></script>
+  <script src="scripts/value-getters.js" defer></script>
+
+  <script src="scripts/templates/utils.js" defer></script>
+  <script src="scripts/templates/table-template.js" defer></script>
+  <script src="scripts/templates/subnet-list-template.js" defer></script>
+
+  <script src="scripts/validation.js" defer></script>
+  <script src="scripts/ip-operations.js" defer></script>
+  <script src="scripts/vlsm-table.js" defer></script>
+  <script src="scripts/buttons.js" defer></script>
+  <script src="scripts/populate.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <div class="wrapper">
+        <div class="card card-form">
+          <h5 class="text-center" style="margin-bottom: 20px;">Calculadora VLSM</h5>
+          <form>
+            <fieldset>
+              <legend>Bloco de rede e Máscara</legend>
+              <div class="form-field">
+                <div class="float-field">
+                  <input type="text" id="ip-block" class="float-input" placeholder="Endereço de IP" title="Ex: 192.168.0.1" required autofocus>
+                  <label for="ip-block" class="float-label" data-content="Endereço de IP">
+                    <span class="float-hidden">Endereço de IP</span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-field">
+                <div class="float-field">
+                  <input required type="text" id="mask-block" class="float-input" placeholder="Máscara ou prefixo" title="Ex: /24 ou 255.255.255.252">
+                  <label for="ip-block" class="float-label" data-content="Máscara ou prefixo">
+                    <span class="float-hidden">Máscara ou prefixo</span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Detalhes das subredes</legend>
+              <div class="buttons-subnets">
+                <div>
+                  <span>Sub redes: <span id="count-subnets"></span></span>
+                </div>
+                <div>
+                  <button  type="button" id="button-minus" class="button-mini" title="Remover um host">
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                      width="16px" height="16px" viewBox="0 0 490.646 490.646"
+                      xml:space="preserve">
+                    <g>
+                      <g>
+                        <path d="M399.179,67.285l-74.794,0.033L324.356,0L166.214,0.066l0.029,67.318l-74.802,0.033l0.025,62.914h307.739L399.179,67.285z
+                          M198.28,32.11l94.03-0.041l0.017,35.262l-94.03,0.041L198.28,32.11z"/>
+                        <path d="M91.465,490.646h307.739V146.359H91.465V490.646z M317.461,193.372h16.028v250.259h-16.028V193.372L317.461,193.372z
+                          M237.321,193.372h16.028v250.259h-16.028V193.372L237.321,193.372z M157.18,193.372h16.028v250.259H157.18V193.372z"/>
+                      </g>
+                    </g>
+                    </svg>
+                  </button>
+                  <button type="button" id="button-plus" class="button-mini" title="Adicionar um host">
+                    <svg version="1.1" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="122.875px" height="122.648px" viewBox="0 0 122.875 122.648" enable-background="new 0 0 122.875 122.648" xml:space="preserve">
+                      <g><path fill-rule="evenodd" clip-rule="evenodd" d="M108.993,47.079c7.683-0.059,13.898,6.12,13.882,13.805 c-0.018,7.683-6.26,13.959-13.942,14.019L75.24,75.138l-0.235,33.73c-0.063,7.619-6.338,13.789-14.014,13.78 c-7.678-0.01-13.848-6.197-13.785-13.818l0.233-33.497l-33.558,0.235C6.2,75.628-0.016,69.448,0,61.764 c0.018-7.683,6.261-13.959,13.943-14.018l33.692-0.236l0.236-33.73C47.935,6.161,54.209-0.009,61.885,0 c7.678,0.009,13.848,6.197,13.784,13.818l-0.233,33.497L108.993,47.079L108.993,47.079z"/></g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!--Dynamically populated. -->
+              <div id="subnet-list"></div>
+
+            </fieldset>
+
+            <div class="button">
+              <button type="button" id="button-generate">Calcular</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <!-- Dynamically populated. -->
+        <div id="table-container" class="table-container">
+      </div>
+      </div>
+  </div>
+
+  </main>
+</body>
+
+</html>

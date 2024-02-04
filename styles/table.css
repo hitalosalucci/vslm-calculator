@@ -1,0 +1,33 @@
+/* table.css */
+table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+thead tr {
+  text-align: left;
+  background-color: #8932C5;
+  color: #fff;
+}
+
+tbody tr {
+  border-bottom: thin solid #772ca9;
+  background-color: #e3c7f5;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #d7a4f7;
+}
+
+tbody tr:hover {
+  background-color: #e3c7f5;
+  text-shadow: none;
+}
